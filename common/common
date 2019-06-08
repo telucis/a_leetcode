@@ -1,0 +1,45 @@
+#### dp
+    
+* backpack
+    - coin-change i&ii
+    - ones-and-zeros
+* coord
+    - array
+        + delete-and-earn
+        + new-21-game
+        + unique-substrings-in-wraparound-string
+    - matirx
+    - jumpGame
+        + video-stitching
+        + minimum-cost-for-tickets
+        + minimum-swaps-to-make-sequence
+* game
+    - predic-the-winner
+    - stone-game
+* sequence
+    - lis
+        + arithmetic-slices-ii
+        + two-keys-keyboard
+        + word-break
+    - stock
+        + best-time-to-buy-and-sell-stock-with-cooldown
+        + best-time-to-buy-and-sell-stock-with-fee
+        + wiggle-subsequence
+    - combination-sum-iv
+    - length-of-longest-fibonacci-subsequence
+* section
+    - guess-number-higher-or-lower-ii
+    - minimum-score-triangulation-of-polygon
+    
+    
+    
+#### count
+* dp: 65
+* bit: 25
+* link: 29
+* tree: 77
+* trie: 7
+* unionfind: 16
+* bfs: 51
+* dfs: 50
+* design: 14
