@@ -50,7 +50,9 @@ import java.util.Queue;
 public class cat_and_mouse_913 {
     public int catMouseGame(int[][] graph) {
         int n = graph.length;
+        // cat位置 mouse位置 mouse/cat先手 猫赢/鼠赢/平局
         int[][][] color = new int[n][n][2];
+        // cat位置 mouse位置 mouse/cat先手 出度
         int[][][] outdegree = new int[n][n][2];
         for (int i=0; i<n; i++) { //cat
             for (int j=0; j<n; j++) {  //mouse

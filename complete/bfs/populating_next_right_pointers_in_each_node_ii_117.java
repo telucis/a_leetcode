@@ -1,4 +1,4 @@
-package complete.bfs.tree;
+package complete.bfs;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -43,6 +43,40 @@ import java.util.Queue;
 public class populating_next_right_pointers_in_each_node_ii_117 {
 
     public Node connect(Node root) {
+        return iterative(root);
+    }
+
+    /**
+     * iterative
+     */
+    public Node iterative(Node root) {
+        if (root==null) return root;
+        Node cur = root;
+        Node nextDummyHead = new Node(0, null, null, null), p = nextDummyHead;
+        while (cur!=null) {
+            if (cur.left!=null) {
+                p.next = cur.left;
+                p = p.next;
+            }
+            if (cur.right!=null) {
+                p.next = cur.right;
+                p = p.next;
+            }
+            if (cur.next!=null) {
+                cur = cur.next;
+            } else {
+                cur = nextDummyHead.next;
+                nextDummyHead.next = null;
+                p = nextDummyHead;
+            }
+        }
+        return root;
+    }
+
+    /**
+     * bfs
+     */
+    public Node bfs(Node root) {
         if (root==null) {
             return null;
         }

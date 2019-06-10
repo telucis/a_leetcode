@@ -1,4 +1,4 @@
-package complete.bfs.graph;
+package complete.bfs.topo;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -36,11 +36,11 @@ import java.util.Queue;
 
     0  1  2
     \ | /
-    3
-    |
-    4
-    |
-    5
+      3
+      |
+      4
+      |
+      5
 
     输出: [3, 4]
     说明:
@@ -87,10 +87,10 @@ public class minimum_height_trees_310 {
                     if (degree[next]==0) {
                         continue;
                     }
-                    if (degree[next]==2) {
+                    degree[next]--;
+                    if (degree[next]==1) {
                         q.offer(next);
                     }
-                    degree[next]--;
                 }
             }
         }
