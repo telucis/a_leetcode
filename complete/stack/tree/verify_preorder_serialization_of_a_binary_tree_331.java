@@ -1,4 +1,4 @@
-package medium.stack;
+package complete.stack.tree;
 
 import java.util.Stack;
 

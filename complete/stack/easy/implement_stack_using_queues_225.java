@@ -1,4 +1,4 @@
-package easy.stack;
+package complete.stack.easy;
 
 import java.util.LinkedList;
 import java.util.Queue;

@@ -1,4 +1,4 @@
-package easy.stack;
+package complete.stack.parentheses;
 
 import java.util.Stack;
 

@@ -1,4 +1,4 @@
-package easy.stack;
+package complete.stack.monotone;
 
 import java.util.HashMap;
 import java.util.Stack;

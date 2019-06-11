@@ -1,4 +1,4 @@
-package medium.recursion;
+package complete.stack.recursion;
 
 /**
  * @author karl.wy

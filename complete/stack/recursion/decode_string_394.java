@@ -1,4 +1,4 @@
-package medium.stack;
+package complete.stack.recursion;
 
 import java.util.Stack;
 

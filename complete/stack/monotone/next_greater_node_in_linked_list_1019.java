@@ -1,4 +1,4 @@
-package medium.stack;
+package complete.stack.monotone;
 
 import dataStruct.ListNode;
 

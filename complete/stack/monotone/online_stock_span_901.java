@@ -1,4 +1,4 @@
-package medium.stack;
+package complete.stack.monotone;
 
 import java.util.Stack;
 
