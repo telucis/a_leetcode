@@ -1,4 +1,4 @@
-package medium.heap;
+package complete.heap;
 
 import java.util.HashMap;
 import java.util.PriorityQueue;

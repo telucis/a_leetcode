@@ -34,7 +34,7 @@ import java.util.Stack;
     nums1和nums2 的数组大小都不超过1000。
 
  */
-public class next_greater_element_i {
+public class next_greater_element_i_496 {
 
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
         Stack<Integer> stack = new Stack<>();

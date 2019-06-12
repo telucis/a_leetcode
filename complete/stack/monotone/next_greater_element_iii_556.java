@@ -1,4 +1,4 @@
-package medium;
+package complete.stack.monotone;
 
 import java.util.Arrays;
 
@@ -24,6 +24,7 @@ public class next_greater_element_iii_556 {
     public int nextGreaterElement(int n) {
         char[] number = (n+"").toCharArray();
         int i, j;
+        // 从后向前找降序转折点
         for (i=number.length-1; i>0; i--) {
             if (number[i-1]<number[i]) {
                 break;
@@ -32,17 +33,18 @@ public class next_greater_element_iii_556 {
         if (i==0) {
             return -1;
         }
+        // 降序中找比i-1大的最小点
         int x = number[i-1], smallest = i;
         for (j=i+1; j<number.length; j++) {
             if (number[j]>x && number[j]<=number[smallest]) {
                 smallest = j;
             }
         }
-
+        // 交换i-1和smallest
         char temp = number[i-1];
         number[i-1] = number[smallest];
         number[smallest] = temp;
-
+        // i-1后面数组升序排列
         Arrays.sort(number, i, number.length);
         long val = Long.parseLong(new String(number));
         return val <= Integer.MAX_VALUE ? (int)val : -1;

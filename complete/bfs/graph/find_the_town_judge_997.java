@@ -1,4 +1,4 @@
-package easy.graph;
+package complete.bfs.graph;
 
 import java.util.ArrayList;
 import java.util.HashMap;
