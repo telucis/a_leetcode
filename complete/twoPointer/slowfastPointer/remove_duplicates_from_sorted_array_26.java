@@ -49,16 +49,13 @@ public class remove_duplicates_from_sorted_array_26 {
     public int removeDuplicates(int[] nums) {
         int index = 0;
         Integer cur = null;
-        int size = 0;
         for (int i=0; i<nums.length; i++) {
             if (cur == null || cur != nums[i]) {
                 cur = nums[i];
-                int tmp = nums[index];
                 nums[index] = nums[i];
-                nums[i] = tmp;
                 index++;
             }
         }
-        return size;
+        return index;
     }
 }

@@ -31,6 +31,8 @@ public class continuous_subarrsy_sum_523 {
 
     /**
      * preSum == dp?
+     * preSum+HashMap
+     * O(n)
      */
     public boolean checkSubarraySum(int[] nums, int k) {
         Map<Integer, Integer> map = new HashMap<Integer, Integer>(){{put(0, -1);}};
@@ -47,6 +49,9 @@ public class continuous_subarrsy_sum_523 {
         return false;
     }
 
+    /**
+     * O(n^2)
+     */
     public boolean checkSubarraySum2(int[] nums, int k) {
         int n = nums.length;
         if (n<=1) return false;
