@@ -16,15 +16,15 @@ package complete.design.baseicDataStruct;
 
     示例：
 
-    MyHashMap hashMap = new MyHashMap();
-    hashMap.put(1, 1);
-    hashMap.put(2, 2);
-    hashMap.get(1);            // 返回 1
-    hashMap.get(3);            // 返回 -1 (未找到)
-    hashMap.put(2, 1);         // 更新已有的值
-    hashMap.get(2);            // 返回 1
-    hashMap.remove(2);         // 删除键为2的数据
-    hashMap.get(2);            // 返回 -1 (未找到)
+    MyHashMap mid = new MyHashMap();
+    mid.put(1, 1);
+    mid.put(2, 2);
+    mid.get(1);            // 返回 1
+    mid.get(3);            // 返回 -1 (未找到)
+    mid.put(2, 1);         // 更新已有的值
+    mid.get(2);            // 返回 1
+    mid.remove(2);         // 删除键为2的数据
+    mid.get(2);            // 返回 -1 (未找到)
 
     注意：
 
