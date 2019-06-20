@@ -29,6 +29,9 @@ import java.util.Map;
  */
 public class number_of_matching_subsequences_792 {
 
+    /**
+     * O(S+W*L)
+     */
     public int numMatchingSubseq(String S, String[] words) {
         Map<Character, Deque<String>> map = new HashMap<>();
         for (char c='a'; c<='z'; c++) {
