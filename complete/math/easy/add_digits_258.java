@@ -32,4 +32,11 @@ public class add_digits_258 {
         } while (sum>=10);
         return sum;
     }
+
+    /**
+     * digits root
+     */
+    public int addDigits2(int num) {
+        return 1+(num-1)%9;
+    }
 }
