@@ -1,4 +1,4 @@
-package complete.math.mid;
+package complete.array.mid;
 
 /**
  * @author karl.wy

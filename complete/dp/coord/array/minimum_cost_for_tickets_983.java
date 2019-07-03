@@ -1,4 +1,4 @@
-package complete.dp.coord;
+package complete.dp.coord.array;
 
 /**
  * @author karl.wy

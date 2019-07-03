@@ -31,7 +31,7 @@ package complete.math.mid;
     n 和 k 满足条件 1 <= k < n <= 104.
 
  */
-public class comments_667 {
+public class beautiful_arrangement_ii_667 {
 
     public int[] constructArray(int n, int k) {
         int[] ans = new int[n];

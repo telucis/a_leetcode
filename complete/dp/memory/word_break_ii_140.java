@@ -1,4 +1,4 @@
-package complete.dp.backpack;
+package complete.dp.memory;
 
 import java.util.ArrayList;
 import java.util.HashMap;

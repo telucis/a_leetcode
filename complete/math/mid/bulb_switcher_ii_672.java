@@ -33,7 +33,7 @@ package complete.math.mid;
 
 
  */
-public class bulb_switcher_672 {
+public class bulb_switcher_ii_672 {
 
     public int flipLights(int n, int m) {
         if (n<=0 || m<0) return 0;
