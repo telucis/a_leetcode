@@ -27,7 +27,7 @@ public class power_of_four_342 {
      * n&=-n
      */
     public boolean isPowerOfFour(int num) {
-        if (num<4) {
+        if (num<1) {
             return false;
         }
         while (num > 1) {

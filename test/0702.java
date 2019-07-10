@@ -26,7 +26,7 @@ public int combinationSum4(int[] nums, int target) {
             if (num > i) break;
             else if (num==i) res[i] += 1;
             else res[i] += res[i-num];
-        } 
+        }
     }
     return res[target];
 }
@@ -165,7 +165,6 @@ public double knightProbability(int N, int K, int r, int c) {
 private double helper(int N, int K, int r, int c) {
     if (r<0 || r>=N || c<0 || c>=N) return 0;
     if (K==0) return 1;
-    System.out.println(r+" "+c+" "+K);
     if (cache[r][c][K-1]!=0) return cache[r][c][K-1];
     double rate = 0;
     for (int i=0; i<8; i++) {
@@ -201,6 +200,7 @@ private double dfs(int[] A, int start, int k, int[] sum, int[][] dp) {
 // 808
 double[][] memo;
 public double soupServing(int N) {
+    if (N>5000) return 1;
     memo = new double[N+1][N+1];
     return helper(N, N);
 }
@@ -432,10 +432,10 @@ public int rob(int[] nums) {
     int n = nums.length;
     if (n==0) return 0;
     if (n==1) return nums[0];
-    if (n==2) return Math.max(nums[1], nums[0]); 
+    if (n==2) return Math.max(nums[1], nums[0]);
     int[] dp1 = new int[n-1], dp2 = new int[n-1];
-    dp1[0] = nums[0], dp1[1] = Math.max(nums[1], nums[0]); 
-    dp2[0] = nums[1], dp2[1] = Math.max(nums[1], nums[2]); 
+    dp1[0] = nums[0], dp1[1] = Math.max(nums[1], nums[0]);
+    dp2[0] = nums[1], dp2[1] = Math.max(nums[1], nums[2]);
     for (int i=2; i<n-1; i++) {
         dp1[i] = Math.max(nums[i]+dp[i-2], dp[i-1]);
     }
@@ -688,7 +688,7 @@ public int minSwap(int[] A, int[] B) {
 }
 
 /**
- * 
+ *
  */
 
 

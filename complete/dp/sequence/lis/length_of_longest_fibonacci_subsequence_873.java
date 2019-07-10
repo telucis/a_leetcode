@@ -1,4 +1,4 @@
-package complete.dp.sequence;
+package complete.dp.sequence.lis;
 
 import java.util.HashMap;
 import java.util.HashSet;

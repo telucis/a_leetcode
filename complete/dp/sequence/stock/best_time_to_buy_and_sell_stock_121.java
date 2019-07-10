@@ -27,8 +27,17 @@ package complete.dp.sequence.stock;
  */
 public class best_time_to_buy_and_sell_stock_121 {
 
-
     public int maxProfit(int[] prices) {
+        int n = prices.length, min = Integer.MAX_VALUE, max=0;
+        if (n<2) return 0;
+        for (int i=0; i<n; i++) {
+            min = Math.min(min, prices[i]);
+            max = Math.max(max, prices[i]-min);
+        }
+        return max;
+    }
+
+    public int maxProfit2(int[] prices) {
         if (prices.length <2) {
             return 0;
         }

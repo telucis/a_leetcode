@@ -1,4 +1,4 @@
-package complete.dp.sequence;
+package complete.dp.sequence.lis;
 
 /**
  * @author karl.wy

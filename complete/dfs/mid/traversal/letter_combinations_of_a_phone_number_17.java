@@ -1,4 +1,4 @@
-package complete.dfs.mid;
+package complete.dfs.mid.traversal;
 
 import java.util.LinkedList;
 import java.util.List;

@@ -1,6 +1,7 @@
 package complete.dp.backpack;
 
 import java.util.Arrays;
+import java.util.HashMap;
 
 /**
  * @author karl.wy
@@ -58,5 +59,24 @@ public class combination_sum_iv_377 {
             }
         }
         return res[target];
+    }
+
+    /**
+     * memory search
+     */
+    public int combinationSum4_2(int[] nums, int target) {
+        Arrays.sort(nums);
+        return dfs(nums, target, new HashMap<Integer, Integer>());
+    }
+    private int dfs(int[] nums, int target, HashMap<Integer, Integer> map) {
+        if (target==0) return 1;
+        if (map.containsKey(target)) return map.get(target);
+        int count = 0;
+        for (int i=0; i<nums.length; i++) {
+            if (target<nums[i]) continue;
+            count += dfs(nums, target-nums[i], map);
+        }
+        map.put(target, count);
+        return count;
     }
 }

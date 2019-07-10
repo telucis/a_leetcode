@@ -1,4 +1,4 @@
-package complete.dfs.mid;
+package complete.dfs.mid.graph;
 
 import java.util.*;
 

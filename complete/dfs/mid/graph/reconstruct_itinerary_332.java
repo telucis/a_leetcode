@@ -1,4 +1,4 @@
-package complete.dfs.mid.traversal;
+package complete.dfs.mid.graph;
 
 import java.util.*;
 

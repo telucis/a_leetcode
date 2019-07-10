@@ -62,6 +62,24 @@ public class coin_change_322 {
         return dp[n][amount];
     }
 
+    public int coinChange(int[] coins, int amount) {
+        int n = coins.length;
+        int[] dp = new int[amount+1];
+        for (int coin : coins) {
+            for (int i=1; i<amount; i++) {
+                if (coin>i) continue;
+                else if (coin==i) dp[i]=1;
+                else {
+                    int k = i/coin;
+                    for (int k=1; i<k; i++) {
+                        dp[i] = Math.min(dp[i], dp[i-coin*k]+k);
+                    }
+                }
+            }
+        }
+        return dp[amount];
+    }
+
     /**
      * dfs
      */

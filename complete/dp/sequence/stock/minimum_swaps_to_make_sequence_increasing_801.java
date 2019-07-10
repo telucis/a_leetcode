@@ -1,4 +1,4 @@
-package complete.dp.coord;
+package complete.dp.sequence.stock;
 
 /**
  * @author karl.wy
