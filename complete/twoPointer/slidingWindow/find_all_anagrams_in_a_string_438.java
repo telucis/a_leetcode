@@ -51,27 +51,23 @@ public class find_all_anagrams_in_a_string_438 {
 
         List<Integer> res=new ArrayList<>();
         int[] book_p=new int[26];
-        for (int i=0;i<p.length();i++)
-        {
+        for (int i=0;i<p.length();i++) {
             book_p[p.charAt(i)-'a']++;
         }
 
         int[] book=new int[26];
         int left=0,right=0;
         book[s.charAt(left)-'a']++;
-        while (true)
-        {
+        while (true) {
             int len=right-left+1;
-            if(len<p.length())
-            {
+            if(len<p.length()) {
                 right++;
                 if(right>=s.length()) {
                     break;
                 }
                 book[s.charAt(right)-'a']++;
             }
-            else if(len==p.length())
-            {
+            else if(len==p.length()) {
                 if(check(book,book_p)) {
                     res.add(left);
                 }
@@ -83,8 +79,7 @@ public class find_all_anagrams_in_a_string_438 {
     }
 
     private boolean check(int[] book, int[] book_p) {
-        for (int i=0;i<26;i++)
-        {
+        for (int i=0;i<26;i++) {
             if(book[i]!=book_p[i]) {
                 return false;
             }

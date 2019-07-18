@@ -1,4 +1,4 @@
-package complete.twoPointer.preSum;
+package complete.twoPointer.slidingWindow;
 
 /**
  * @author karl.wy

@@ -45,7 +45,7 @@ public class largest_perimeter_triangle_976 {
         Arrays.sort(A);
         for (int i=A.length-1; i>=2; i--) {
             int a=A[i], b=A[i-1], c=A[i-2];
-            if (c < b+c) {
+            if (a < b+c) {
                 return a + b + c;
             }
         }

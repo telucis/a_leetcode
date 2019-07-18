@@ -1,4 +1,4 @@
-package complete.tree;
+package complete.tree.divideConquer_easy;
 
 import dataStruct.TreeNode;
 

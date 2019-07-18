@@ -1,4 +1,4 @@
-package complete.twoPointer.slowfastPointer;
+package complete.twoPointer.partition;
 
 /**
  * @author karl.wy

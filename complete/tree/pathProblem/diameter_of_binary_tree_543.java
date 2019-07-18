@@ -1,4 +1,4 @@
-package complete.tree;
+package complete.tree.pathProblem;
 
 import dataStruct.TreeNode;
 

@@ -38,6 +38,7 @@ public class continuous_subarrsy_sum_523 {
         Map<Integer, Integer> map = new HashMap<Integer, Integer>(){{put(0, -1);}};
         int runningSum = 0;
         for (int i=0; i<nums.length; i++) {
+            runningSum += nums[i];
             if (k!=0) runningSum %= k;
             Integer prev = map.get(runningSum);
             if (prev!=null) {
