@@ -35,6 +35,7 @@ public class valid_triangle_number_611 {
             while (l<r) {
                 if (nums[l]+nums[r] > nums[i]) {
                     count += r-l;
+                    r--;
                 } else {
                     l++;
                 }

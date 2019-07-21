@@ -2,6 +2,7 @@ package complete.heap.hard;
 
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 
 /**
  * @author karl.wy
@@ -50,6 +51,24 @@ public class sliding_window_maximum_239 {
             list.addLast(i);
             if (list.peek()<=i-k) list.poll();
             if (i-k+1>=0) result[i-k+1] = nums[list.peek()];
+        }
+        return result;
+    }
+
+    /**
+     * heap
+     */
+    public int[] maxSlidingWindow2(int[] nums, int k) {
+        if (nums.length==0 || k>nums.length) return new int[0];
+        int[] result = new int[nums.length-k+1];
+        int i=0, m=0;
+        PriorityQueue<Integer> pri = new PriorityQueue<>(k, (o1, o2)->o2-o1);
+        for (int j=0; j<k; j++) pri.add(nums[j]);
+
+        for (int z=k; z<nums.length; z++) {
+            result[i++] = pri.peek();
+            pri.remove(nums[m++]);
+            pri.add(nums[z]);
         }
         return result;
     }
