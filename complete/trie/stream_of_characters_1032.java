@@ -1,4 +1,4 @@
-package complete.tree.trie;
+package complete.trie;
 
 /**
  * @author karl.wy

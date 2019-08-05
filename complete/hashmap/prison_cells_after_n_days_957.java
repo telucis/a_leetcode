@@ -1,4 +1,4 @@
-package complete.hashmap.easy;
+package complete.hashmap;
 
 import java.util.Arrays;
 import java.util.HashSet;

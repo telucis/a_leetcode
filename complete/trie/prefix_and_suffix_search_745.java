@@ -1,4 +1,4 @@
-package complete.tree.trie;
+package complete.trie;
 
 import java.util.ArrayList;
 import java.util.HashMap;

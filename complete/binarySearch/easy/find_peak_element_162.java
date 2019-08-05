@@ -1,4 +1,4 @@
-package complete.binarySearch.mid;
+package complete.binarySearch.easy;
 
 /**
  * @author karl.wy

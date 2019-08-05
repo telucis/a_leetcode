@@ -1,4 +1,4 @@
-package complete.tree.trie;
+package complete.trie;
 
 import java.util.Arrays;
 import java.util.HashSet;
