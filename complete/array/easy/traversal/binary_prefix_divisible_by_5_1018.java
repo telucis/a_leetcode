@@ -49,11 +49,8 @@ public class binary_prefix_divisible_by_5_1018 {
         for (int i=0; i<A.length; i++) {
             a = (a<<1) + A[i];
             int b = a&5;
-            if (b==0) {
-                res.add(true);
-            } else {
-                res.add(false);
-            }
+            if (b==0) res.add(true);
+            else res.add(false);
             a = b;
         }
         return res;

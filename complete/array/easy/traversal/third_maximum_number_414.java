@@ -35,12 +35,8 @@ package complete.array.easy.traversal;
 public class third_maximum_number_414 {
 
     public int thirdMax(int[] nums) {
-        if (nums.length == 1) {
-            return nums[0];
-        }
-        if (nums.length == 2) {
-            return Math.max(nums[0], nums[1]);
-        }
+        if (nums.length == 1) return nums[0];
+        if (nums.length == 2) return Math.max(nums[0], nums[1]);
         Integer max1 = null, max2 = null, max3 = null;
         for (int i=0; i<nums.length; i++) {
             if (max1 == null) {

@@ -64,4 +64,39 @@ public class recover_a_tree_from_preorder_traversal_1028 {
         root.right = helper(s, level+1);
         return root;
     }
+
+
+    public TreeNode recoverFromPreorder2(String S) {
+        int count = 0;
+        String sep = "<";
+        StringBuilder sb = new StringBuilder();
+        for (int i=0; i<S.length(); i++) {
+            if (S.charAt(i)=='-') {
+                count++;
+                sep+="-";
+            } else {
+                if (count!=0) {
+                    sb.append(sep);
+                    sb.append(">");
+                    sep="<";
+                    count=0;
+                }
+                sb.append(S.charAt(i));
+            }
+        }
+        return hp(sb.toString(), 1);
+    }
+    private TreeNode hp(String s, int level) {
+        if (s.isEmpty()) return null;
+        String sep = "<";
+        int l = level;
+        while (l-->0) sep+="-";
+        sep+=">";
+        String[] list = s.split(sep);
+        TreeNode root = new TreeNode(Integer.parseInt(list[0]));
+        if (list.length==1) return root;
+        root.left = hp(list[1], level+1);
+        if (list.length==3) root.right = hp(list[2], level+1);
+        return root;
+    }
 }

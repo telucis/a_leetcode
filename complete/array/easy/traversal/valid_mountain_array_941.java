@@ -41,26 +41,15 @@ package complete.array.easy.traversal;
 public class valid_mountain_array_941 {
 
     public boolean validMountainArray(int[] A) {
-        if(A.length < 3) {
-            return false;
-        }
+        if(A.length < 3) return false;
+        if (A[0]>=A[1]) return false;
+        if (A[A.length-1]>=A[A.length-2]) return false;
+
         boolean up = true;
-        if (A[0]>=A[1]) {
-            return false;
-        }
-        if (A[A.length-1]>=A[A.length-2]) {
-            return false;
-        }
         for (int i=1; i<A.length; i++) {
-            if (up==true && A[i]<A[i-1]) {
-                up = false;
-            }
-            if (A[i] == A[i-1]) {
-                return false;
-            }
-            if (up==false && A[i]>A[i-1]) {
-                return false;
-            }
+            if (up==true && A[i]<A[i-1]) up = false;
+            if (A[i] == A[i-1]) return false;
+            if (up==false && A[i]>A[i-1]) return false;
         }
         return true;
     }

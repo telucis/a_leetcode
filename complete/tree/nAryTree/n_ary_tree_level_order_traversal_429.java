@@ -3,7 +3,9 @@ package complete.tree.nAryTree;
 import dataStruct.Node;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * @author karl.wy
@@ -55,6 +57,28 @@ public class n_ary_tree_level_order_traversal_429 {
             }
         }
         res.addAll(tmpList);
+        return res;
+    }
+
+    public List<List<Integer>> levelOrder2(Node root) {
+        List<List<Integer>> res = new ArrayList<>();
+        if (root==null) return res;
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            List<Integer> tmp = new ArrayList<>();
+            Queue<Node> queue2 = new LinkedList<>();
+            for (int i=0; i<size; i++) {
+                Node node = queue.poll();
+                tmp.add(node.val);
+                if (node.children!=null) {
+                    for (Node n : node.children) queue2.offer(n);
+                }
+            }
+            res.add(tmp);
+            queue = queue2;
+        }
         return res;
     }
 }

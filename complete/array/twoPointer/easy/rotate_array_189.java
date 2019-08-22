@@ -1,4 +1,4 @@
-package complete.array.easy.twoPoint;
+package complete.twoPointer.easy;
 
 /**
  * @author karl.wy

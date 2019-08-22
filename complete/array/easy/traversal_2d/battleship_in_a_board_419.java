@@ -1,4 +1,4 @@
-package complete.array.mid.traversal_2d;
+package complete.array.easy.traversal_2d;
 
 /**
  * @author karl.wy

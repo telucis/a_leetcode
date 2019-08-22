@@ -37,9 +37,7 @@ public class path_sum_ii_113 {
 
     public List<List<Integer>> pathSum(TreeNode root, int sum) {
         List<List<Integer>> ans = new ArrayList<>();
-        if (root==null) {
-            return ans;
-        }
+        if (root==null) return ans;
         helper(root, sum, new ArrayList<>(), ans);
         return ans;
     }

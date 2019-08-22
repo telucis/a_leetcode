@@ -36,4 +36,17 @@ public class count_complete_tree_nodes_222 {
         int right = countNodes(root.right);
         return left+right+1;
     }
+
+    public int countNodes2(TreeNode root) {
+        if (root==null) return 0;
+        int ans = 1;
+        int lh = getH(root.left), rh = getH(root.right);
+        if (lh==rh) ans += Math.pow(2, lh)-1+countNodes2(root.right);
+        else ans+=Math.pow(2, rh)-1+countNodes2(root.left);
+        return ans;
+    }
+    private int getH(TreeNode root) {
+        if (root==null) return 0;
+        return getH(root.left)+1;
+    }
 }

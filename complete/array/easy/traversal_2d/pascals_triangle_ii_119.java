@@ -31,9 +31,7 @@ public class pascals_triangle_ii_119 {
     public List<Integer> getRow(int rowIndex) {
         List<Integer> res = new ArrayList<>();
         res.add(1);
-        if (rowIndex == 0) {
-            return res;
-        }
+        if (rowIndex == 0) return res;
         res.add(1);
         if (rowIndex == 1) {
             return res;

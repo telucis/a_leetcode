@@ -1,4 +1,4 @@
-package complete.tree.divideConquer_mid;
+package complete.tree.traversal_mid;
 
 import dataStruct.TreeNode;
 

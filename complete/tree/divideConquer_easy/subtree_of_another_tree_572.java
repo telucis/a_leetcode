@@ -45,32 +45,19 @@ import dataStruct.TreeNode;
 
  */
 public class subtree_of_another_tree_572 {
-    private boolean res = false;
+
     public boolean isSubtree(TreeNode s, TreeNode t) {
-        helper(s, t);
-        return res;
+        if (t==null) return true;
+        if (s==null) return false;
+        if (s.val==t.val && isSameTree(s, t)) return true;
+        return isSubtree(s.left, t) || isSubtree(s.right, t);
     }
-    private void helper(TreeNode s, TreeNode t) {
-        if (isSameTree(s, t)) {
-            res = true;
+    private boolean isSameTree(TreeNode s, TreeNode t) {
+        if (t==null && s==null) return true;
+        if (s!=null && t!=null) {
+            if (s.val!=t.val) return false;
+            return isSameTree(s.left, t.left) && isSameTree(s.right, t.right);
         }
-        if (s.left != null) {
-            helper(s.left, t);
-        }
-        if (s.right != null) {
-            helper(s.right, t);
-        }
-    }
-    private boolean isSameTree(TreeNode a, TreeNode b) {
-        if (a == null && b == null) {
-            return true;
-        } else if (a == null || b == null) {
-            return false;
-        } else {
-            if (a.val != b.val) {
-                return false;
-            }
-            return isSameTree(a.left, b.left) && isSameTree(a.right, b.right);
-        }
+        return false;
     }
 }

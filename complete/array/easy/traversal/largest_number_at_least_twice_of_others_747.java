@@ -41,22 +41,15 @@ public class largest_number_at_least_twice_of_others_747 {
         boolean flag = true;
         for (int i=1; i<n; i++) {
             if (nums[i] > maxValue) {
-                if (nums[i] >= 2*maxValue) {
-                    flag = true;
-                } else {
-                    flag = false;
-                }
+                if (nums[i] >= 2*maxValue) flag = true;
+                else flag = false;
                 maxValue = nums[i];
                 max = i;
             } else {
-                if (maxValue < 2*nums[i]) {
-                    flag = false;
-                }
+                if (maxValue < 2*nums[i]) flag = false;
             }
         }
-        if (flag) {
-            return max;
-        }
+        if (flag) return max;
         return -1;
     }
 }

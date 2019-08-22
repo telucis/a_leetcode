@@ -49,9 +49,7 @@ public class monotonic_array_896 {
 
     public boolean isMonotonic(int[] A) {
         boolean isup = true;
-        if (A.length <= 1) {
-            return true;
-        }
+        if (A.length <= 1) return true;
         List<Integer> newA = new ArrayList<>();
         newA.add(A[0]);
         for (int i=1; i<A.length; i++) {

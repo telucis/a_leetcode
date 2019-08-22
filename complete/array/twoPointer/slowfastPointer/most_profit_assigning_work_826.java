@@ -49,7 +49,7 @@ public class most_profit_assigning_work_826 {
     }
 
     /**
-     * heap
+     * treeMap
      */
     public int maxProfitAssignment(int[] difficulty, int[] profit, int[] worker) {
         int n=difficulty.length, ans=0, max=0;

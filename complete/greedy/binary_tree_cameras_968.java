@@ -1,4 +1,4 @@
-package complete.dp;
+package complete.greedy;
 
 import dataStruct.TreeNode;
 
@@ -39,25 +39,6 @@ import dataStruct.TreeNode;
  */
 public class binary_tree_cameras_968 {
     /**
-     * dp
-     */
-    public int minCameraCover(TreeNode root) {
-        int[] ans = dp(root);
-        return Math.min(ans[1], ans[2]);
-    }
-    //int[0] no_covered | int[1] covered | int[2] parent_covered
-    private int[] dp(TreeNode root) {
-        if (root==null) return new int[]{0,0,1};
-        int[] left = dp(root.left);
-        int[] right = dp(root.right);
-        return new int[] {
-            left[1]+right[1],
-            Math.min(left[2]+Math.min(right[1], right[2]), right[2]+Math.min(left[1], left[2])),
-            Math.min(left[0], Math.min(left[1], left[2]))+Math.min(right[0], Math.min(right[1], right[2]))+1
-        };
-    }
-
-    /**
      * greedy
      */
     private int NOT_MONITED = 0;
@@ -80,5 +61,24 @@ public class binary_tree_cameras_968 {
         } else {
             return MONITED_NOCAM;
         }
+    }
+
+    /**
+     * dp
+     */
+    public int minCameraCover(TreeNode root) {
+        int[] ans = dp(root);
+        return Math.min(ans[1], ans[2]);
+    }
+    //int[0] no_covered | int[1] covered | int[2] parent_covered
+    private int[] dp(TreeNode root) {
+        if (root==null) return new int[]{0,0,1};
+        int[] left = dp(root.left);
+        int[] right = dp(root.right);
+        return new int[] {
+            left[1]+right[1],
+            Math.min(left[2]+Math.min(right[1], right[2]), right[2]+Math.min(left[1], left[2])),
+            Math.min(left[0], Math.min(left[1], left[2]))+Math.min(right[0], Math.min(right[1], right[2]))+1
+        };
     }
 }

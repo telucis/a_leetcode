@@ -51,11 +51,7 @@ public class most_frequent_subtree_sum_508 {
                 list.add(entry.getKey());
             }
         }
-        int[] ans = new int[list.size()];
-        for (int i=0; i<ans.length; i++) {
-            ans[i] = list.get(i);
-        }
-        return ans;
+        return list.stream().mapToInt(a->a).toArray();
     }
     private int helper(TreeNode node) {
         if (node==null) {

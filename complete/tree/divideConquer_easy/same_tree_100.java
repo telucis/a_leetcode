@@ -46,21 +46,13 @@ public class same_tree_100 {
     public boolean isSameTree(TreeNode p, TreeNode q) {
         if (p == null && q == null) {
             return true;
-        } else if (p == null) {
-            return false;
-        } else if (q == null) {
+        } else if (p == null || q == null) {
             return false;
         } else {
-            if (p.val != q.val) {
-                return false;
-            }
+            if (p.val != q.val) return false;
             boolean left = isSameTree(p.left, q.left);
             boolean right = isSameTree(p.right, q.right);
-            if (!left || !right) {
-                return false;
-            } else {
-                return true;
-            }
+            return left && right;
         }
     }
 }

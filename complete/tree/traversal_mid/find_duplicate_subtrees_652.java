@@ -42,16 +42,12 @@ public class find_duplicate_subtrees_652 {
     public List<TreeNode> findDuplicateSubtrees(TreeNode root) {
         List<TreeNode> ans = new ArrayList<>();
         HashMap<String, Integer> map = new HashMap<>();
-        if (root==null) {
-            return ans;
-        }
+        if (root==null) return ans;
         saveRoute(root, ans, map);
         return ans;
     }
     private String saveRoute(TreeNode node, List<TreeNode> res, HashMap<String, Integer> map) {
-        if (node==null) {
-            return "";
-        }
+        if (node==null) return "";
         String route = node.val+","+saveRoute(node.left, res, map)+","+saveRoute(node.right, res,map);
         if (map.get(route) != null && map.get(route)==1) {
             res.add(node);

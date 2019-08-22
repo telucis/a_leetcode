@@ -1,4 +1,4 @@
-package complete.link.slowfastPointer;
+package complete.link.sort;
 
 import dataStruct.ListNode;
 
