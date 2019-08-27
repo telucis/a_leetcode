@@ -31,8 +31,8 @@ package complete.dfs.mid.partition;
 public class matchsticks_to_square_473 {
 
     /**
-     * buckets
-     * for(i<4) dfs(nums, sums, index+1, target)
+        buckets
+        for(i<4) dfs(nums, sums, index+1, target)
      */
     public boolean makesquare(int[] nums) {
         if (nums==null || nums.length<4) return false;
