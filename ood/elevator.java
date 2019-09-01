@@ -1,4 +1,99 @@
 /**
+ * 电梯设计 - 九章
+ * 
+ * Clarify  
+ *     Elevator
+ *     Building
+ * Core objects  输出流程图
+ *     ElevatorSystem
+ *         input: Request
+ *         oubput: Elevator->elevatorButton
+ *     Elevator
+ *         input: Request
+ *         output: 
+ * Cases  输出case
+ *     Request
+ *     Elevator
+ *         take external request
+ *         take internal request
+ *         open gate
+ *         close gate
+ *         check weight
+ *     ElevatorButton
+ *         press button
+ * Classes  输出类图
+ *     ElevatorSystem
+ *         - List<Elevator> elevators
+ *         - HandleRequestStrategy strategy
+ *         + void handleRequest(ExternalRequest request)
+ *         + void setStrategy(HandleRequestStrategy s)
+ *     Elevator
+ *         - List<ElevatorButton> buttons
+ *     ElevatorButton
+ *     ExternalRequest
+ *     
+ *     InvalidExternalRequestExceptions
+ * Correctness
+ */
+
+// bad design
+public void handleRequest(ExternalRequest r) {
+    if (time == TIME.PEAK) {}
+    else if (time == TIME.NORMAL) {}
+}
+
+interface HandleRequestStrategy {
+    void handleRequest(Request r, List<Elevator> elevators) {};
+}
+
+class RandomHandleRequestStraegy implements HandleRequestStrategy {
+    public void handleRequest(ExternalRequest request, List<Elevator> elevators) {
+        Random rand = new Random();
+        int n = rand.nextInt(elevators.size());
+        elevators.get(n).handleExternalRequest(request);
+    }
+}
+class AlwaysOneElevatorHandleRequestStrategy implements HandleRequestStrategy {
+    public void handleRequest(ExternalRequest request, List<Elevator> elevators) {
+        elevators.get(0).handleExternalRequest(request);
+    }
+}
+
+public class ElevatorSystem {
+    private List<Elevator> elevators;
+    HandleRequestStrategy handleRequestStrategy;
+
+    public void setStrategy(HandleRequestStrategy handleRequestStrategy) {
+        this.handleRequestStrategy = handleRequestStrategy;
+    }
+
+    public void handleRequest(ExternalRequest request) {
+        handleRequestStrategy.handleRequest(request, elevators);
+    }
+}
+
+public class Elevator {
+    private List<ElevatorButton> buttons;
+    private 
+}
+
+public class ElevatorButton {
+    private 
+}
+
+public class ExternalRequest {
+
+}
+
+public enum State {
+    RUNNING_UP,
+    RUNNING_DOWN,
+    WAITING,
+    BROKEN,
+    REPAIRING;
+}
+
+/**
  * 电梯设计
  * 
 	需求: 以面向对象的方式设计一个电梯, 包含一些必要的类和函数.
