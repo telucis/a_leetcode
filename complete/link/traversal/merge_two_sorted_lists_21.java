@@ -19,12 +19,8 @@ import dataStruct.ListNode;
 public class merge_two_sorted_lists_21 {
 
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-        if (l1 == null) {
-            return l2;
-        }
-        if (l2 == null) {
-            return l1;
-        }
+        if (l1 == null) return l2;
+        if (l2 == null) return l1;
         ListNode res;
         if (l1.val < l2.val) {
             res = l1;

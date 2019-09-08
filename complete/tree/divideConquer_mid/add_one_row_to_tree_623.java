@@ -82,4 +82,21 @@ public class add_one_row_to_tree_623 {
         }
         return root;
     }
+
+
+    public TreeNode addOneRow2(TreeNode root, int v, int d) {
+        return helper(root, v, d, true);
+    }
+    private helper(TreeNode node, int v, int d, boolean isLeft) {
+        if (d==1) {
+            TreeNode root = new TreeNode(v);
+            if (isLeft) root.left = node;
+            else root.right = node;
+            return root;
+        }
+        if (node==null) return node;
+        node.left = helper(node.left, v, d-1, true);
+        node.right = helper(node.right, v, d-1, false);
+        return node;
+    }
 }

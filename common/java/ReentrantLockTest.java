@@ -8,7 +8,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author karl.wy
  * @date 2019/07/26
  */
-public class ReentranLock {
+public class ReentrantLockTest {
     public void test() {
         Lock lock = new ReentrantLock();
         lock.lock();

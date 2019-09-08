@@ -56,6 +56,9 @@ public class distribute_coins_in_binary_tree_979 {
         getNumAndCoins(root);
         return move;
     }
+    /**
+     * int[子树节点数，子树金币数]
+     */
     private int[] getNumAndCoins(TreeNode node) {
         if (node==null) {
             return new int[]{0, 0};

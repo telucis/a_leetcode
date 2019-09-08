@@ -6,7 +6,7 @@ import java.util.LinkedList;
  * @author karl.wy
  * @date 2019/07/26
  */
-public class Wait_Notify {
+public class ProducerCustomer_syn {
 
     public class K {
         private Object lock;
@@ -157,7 +157,7 @@ public class Wait_Notify {
         p7.start();
     }
     public static void main(String[] args) {
-        Wait_Notify wait_notify = new Wait_Notify();
-        wait_notify.test();
+        ProducerCustomer_syn producerCustomersyn = new ProducerCustomer_syn();
+        producerCustomersyn.test();
     }
 }

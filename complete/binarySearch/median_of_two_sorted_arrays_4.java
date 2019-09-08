@@ -71,6 +71,35 @@ public class median_of_two_sorted_arrays_4 {
         return arr.length;
     }
 
+
+    public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        if (nums1.length == 0)
+            return (nums2.length % 2 == 1)?nums2[nums2.length / 2]:((nums2[nums2.length / 2 - 1] + nums2[nums2.length / 2]) / 2.0);
+        if (nums2.length == 0)
+            return (nums1.length % 2 == 1)?nums1[nums1.length / 2]:((nums1[nums1.length / 2 - 1] + nums1[nums1.length / 2]) / 2.0);
+        int len = nums1.length + nums2.length;
+        if(nums1.length>nums2.length)
+        {
+            int[] tmp=nums1;
+            nums1=nums2;
+            nums2=tmp;
+        }
+        int low=0,high=nums1.length-1,m1=0,n1=0,max_left=0,min_right=0;
+        while(true)
+        {
+            m1=(low>high)?-1:((low+high)/2);
+            n1=(len%2==0)?(len/2-2-m1):((len-1)/2-2-m1);
+            max_left=Math.max(m1<0?nums2[n1]:nums1[m1],n1<0?nums1[m1]:nums2[n1]);
+            min_right=Math.min(m1+1>=nums1.length?nums2[n1+1]:nums1[m1+1],n1+1>=nums2.length?nums1[m1+1]:nums2[n1+1]);
+            if(max_left<=min_right)
+                return (len%2==0)?((max_left+min_right)/2.0):min_right;
+            if((m1<0 && nums1[0]>min_right)||(m1>=0 && nums1[m1]>min_right))
+                high=m1-1;
+            if((m1<0 && nums1[0]<=min_right)||(m1>=0 && nums1[m1]<=min_right))
+                low=m1+1;
+        }
+    }
+
     /**
      * divide conquer
      */

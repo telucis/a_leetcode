@@ -3,6 +3,8 @@ package common.java;
 /**
  * @author karl.wy
  * @date 2019/08/14
+ *
+ * 测试类加载
  */
 public class StaticTest {
 

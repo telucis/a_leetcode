@@ -52,7 +52,6 @@ public class find_k_closest_elements_658 {
         List<Integer> ans = new ArrayList<>();
         for (int l=i+1; l<j; l++) {
             ans.add(arr[l]);
-        }
-        return ans;
+        })
     }
 }
