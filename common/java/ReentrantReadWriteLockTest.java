@@ -13,7 +13,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  */
 public class ReentrantReadWriteLockTest {
 
-    private Map<String, Object> map = new HashMap<>(); //缓存器
+    private Map<String, Object> map = new HashMap<String, Object>(); //缓存器
     private ReadWriteLock rwl = new ReentrantReadWriteLock();
 
     public  Object get(String id) {

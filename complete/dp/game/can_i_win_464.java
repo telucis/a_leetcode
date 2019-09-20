@@ -74,7 +74,7 @@ public class can_i_win_464 {
         }
         return map.get(key);
     }
-    private  int format(boolean[] used) {
+    private int format(boolean[] used) {
         int num = 0;
         for (boolean b : used) {
             num<<=1;

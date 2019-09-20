@@ -72,3 +72,76 @@ public class Client {
 
 
 
+/**
+ * head-first
+ */
+public abstract class Duck {
+    FlyBehavior flyBehavior;
+    QuackBehavior quackBehavior;
+    public Duck() {}
+    public abstract void display();
+    public void performFly() {
+        flyBehavior.fly();
+    }
+    public void performQuack() {
+        quackBehavior.quack();
+    }
+    public void setFlyBehavior(FlyBehavior fb) {
+        flyBehavior = fb;
+    }
+    public void setQuackBehavior(QuackBehavior qb) {
+        quackBehavior = qb;
+    }
+    public void swim() {
+        System.out.println("All ducks float, even decoys!");
+    }
+}
+public class MallardDuck extends Duck {
+    public MallardDuck() {
+        quackBehavior = new Quack();
+        flyBehavior = new FlyWithWings();
+    }
+}
+
+public interface FlyBehavior {
+    public void fly();
+}
+public class FlyWithWings implements FlyBehavior {
+    public void fly() {
+        System.out.println("I'm flying!");
+    }
+}
+public class FlyNoWay implements FlyBehavior {
+    public void fly() {
+        System.out.println("I can't fly!");
+    }
+}
+
+public interface QuackBehavior {
+    public void quack();
+}
+public class Quack implements QuackBehavior {
+    public void quack() {
+        System.out.println("Quack!");
+    }
+}
+public class MuteQuack implements QuackBehavior {
+    public void quack() {
+        System.out.println("<<Silence>>!");
+    }
+}
+public class Squeak implements QuackBehavior {
+    public void quack() {
+        System.out.println("Squeak!");
+    }
+}
+
+public class MiniDuckSimulator {
+    public static void main(String[] args) {
+        Duck mallard = new MallardDuck();
+        mallard.performQuack();
+        mallard.performFly();
+    }
+}
+
+

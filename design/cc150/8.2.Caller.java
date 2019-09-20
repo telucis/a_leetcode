@@ -134,7 +134,7 @@ public abstract class Employee {
         if (currentCall != null) {
             currentCall.incrementRank();
             CallHandler.getInstance().dispatchCall(currentCall);
-            currentCall = null
+            currentCall = null;
         }
         assignNewCall();
     }
