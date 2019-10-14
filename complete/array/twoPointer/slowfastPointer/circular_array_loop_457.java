@@ -48,8 +48,6 @@ public class circular_array_loop_457 {
             }
             // slow/fast pointer
             int j=i, k=getIndex(i, nums);
-            System.out.println(k);
-            System.out.println(getIndex(k, nums));
             while (nums[k]*nums[i]>0 && nums[getIndex(k, nums)]*nums[i]>0) {
                 if (j==k) {
                     if (j==getIndex(j, nums)) {

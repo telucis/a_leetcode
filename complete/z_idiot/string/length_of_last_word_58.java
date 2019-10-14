@@ -21,6 +21,17 @@ package complete.z_idiot.string;
 public class length_of_last_word_58 {
 
     public int lengthOfLastWord(String s) {
+        if (s==null || s.length()==0) return 0;
+        s = s.trim();
+        int ans = 0;
+        for (int i=s.length()-1; i>=0; i--) {
+            if (s.charAt(i)==' ') return ans;
+            ans++;
+        }
+        return ans;
+    }
+
+    public int lengthOfLastWord2(String s) {
         s = s.trim();
         int len = 0;
         for (int i=0; i<s.length(); i++) {

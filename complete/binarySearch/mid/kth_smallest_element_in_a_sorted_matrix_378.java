@@ -25,19 +25,20 @@ package complete.binarySearch.mid;
 
  */
 public class kth_smallest_element_in_a_sorted_matrix_378 {
-
+    /**
+     * binarySearch
+     */
     public int kthSmallest(int[][] matrix, int k) {
         int n = matrix.length;
         int lo=matrix[0][0], hi=matrix[n-1][n-1];
         while (lo<hi) {
-            int mid=hi-(hi-lo)/2;
+            int mid=lo+(hi-lo)/2;
             int count = getLessEqual(matrix, mid);
             if (count<k) {
                 lo=mid+1;
             } else {
                 hi=mid;
             }
-            System.out.println(lo);
         }
         return lo;
     }
@@ -53,5 +54,25 @@ public class kth_smallest_element_in_a_sorted_matrix_378 {
             }
         }
         return res;
+    }
+
+    /**
+     * heap
+     */
+    public int kthSmallest2(int[][] matrix, int k) {
+        int n = matrix.length;
+        PriorityQueue<int[]> q = new PriorityQueue<>((a, b)-> a[0]-b[0]);
+        int len = Math.min(k, n);
+        for (int i=0; i<len; i++) {
+            q.offer(new int[]{matrix[i][0], i, 0});
+        }
+        int[] res = new int[]{matrix[0][0], 0, 0};
+        while (k-->0) {
+            res = q.poll();
+            int row=res[1], col=res[2];
+            if (col==n-1) continue;
+            q.offer(new int[]{matrix[row][col+1], row, col+1});
+        }
+        return res[0];
     }
 }

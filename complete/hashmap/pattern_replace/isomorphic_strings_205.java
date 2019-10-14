@@ -57,4 +57,34 @@ public class isomorphic_strings_205 {
         }
         return true;
     }
+
+    public boolean isIsomorphic2(String s, String t) {
+        if(s.length() != t.length()) return false;
+        
+        HashMap<Character, Character> map = new HashMap<>();
+        for(int i=0; i<s.length(); i++){
+            if(!map.containsKey(s.charAt(i))){
+                if(map.containsValue(t.charAt(i))){
+                    return false;
+                }
+                map.put(s.charAt(i), t.charAt(i));
+            }else{
+                if(map.get(s.charAt(i))!=t.charAt(i)){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public boolean isIsomorphic3(String s, String t) {
+        if(s.length()==0)return true;
+        int i=0;
+        while(i<s.length()) {
+            if (s.indexOf(s.charAt(i))!=t.indexOf(t.charAt(i)))
+                return false;
+            i++;
+        }
+        return true;
+    }
 }

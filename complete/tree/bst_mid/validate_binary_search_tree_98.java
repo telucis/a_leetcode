@@ -52,7 +52,7 @@ public class validate_binary_search_tree_98 {
         int ll, lr, rl, rr;
         if (node.left!=null) {
             int[] l = helper(node.left);
-            if (l[0] == 0 | l[2]>=node.val) {
+            if (l[0] == 0 || l[2]>=node.val) {
                 return bad;
             } else {
                 ll = l[1]; lr = l[2];

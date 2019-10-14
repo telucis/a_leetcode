@@ -41,7 +41,7 @@ import java.util.HashMap;
 public class combination_sum_iv_377 {
 
     /**
-     * 01 backpack
+     * 完全 backpack
      * dp[target+1]
      * for(target+1)for(nums) dp[i]+=res[i-num]
      */

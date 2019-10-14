@@ -204,3 +204,139 @@ problem:
 
 
 
+* Scenario
+    - Requirement
+        + 根据 Long URL 生成一个 Short URL
+        + 根据 Short URL 还原 Long URL，并跳转
+    - DAU: 约100M
+        + 发送
+            * Average Write QPS = 100M * 0.1 / 86400 ~ 100
+            * Peak Write QPS = 100 * 2 = 200
+        + 点击
+            * Average Read QPS = 100M * 1 / 86400 ~ 1k
+            * Peak Read QPS = 2k
+        + 存储
+            * 100M * 0.1 ~ 10M 条
+            * 每一条 URL 长度平均 100b 算，一共1G
+            * 1T 的硬盘可以用 3 年
+* Service
+    - UrlService
+    - 算法1：使用哈希函数
+        + 取 LongUrl 的 MD5 后6位
+        + 优点：快
+        + 缺点：无法避免冲突
+    - 算法2：随机生成 + 数据库去重
+        + 随机生成6位 shortUrl
+        + 优点：实现简单
+        + 缺点：越来越慢
+    - 算法3：进制转换 BASE62
+        + 将6位shortUrl看做62进制整数
+        + 每个shortUrl对应一个整数
+        + 优点：效率高
+        + 缺点：依赖全局的自增ID
+* Storage
+    - SQL 型数据库 用到自增id
+    ```sql
+        CREATE TABLE UrlTable (
+            `id`    integer,
+            `longUrl`   text
+        )
+    ```
+* Scale - 提速
+    - 利用缓存(Cache Aside)
+        + long to short (查询新 short url 时需要)
+        + short to long (查询 short url 时需要)
+* Scale - **地理位置信息提速**
+    - 优化服务器访问速度
+        + 不同的地区，使用不同的web服务器
+        + 通过DNS解析不同地区的用户到不同的服务器
+    - 优化数据访问速度
+        + 使用Centralized MySQL + Distributed Memcached
+        + 一个MySQL配多个Memcached, Memcached跨地区分布
+* Scale - 多台数据库服务器
+    - 什么情况需要
+        + Cache 资源不够
+        + 写操作越来越多
+        + 越来越多的请求无法通过 Cache 满足
+    - 增加多台数据库服务器可优化什么
+        + 解决"存不下"的问题 -- Storage 角度
+        + 解决"忙不过"的问题 -- QPS 的角度
+        + Tiny URL 主要问题是什么
+    - Horizontal Sharding
+        + LongURL 做 shard key
+            * 查询的时候，只能广播给N台数据库查询
+            * 不能解决每台QPS的问题
+        + ID 做 shard key
+            * 按照 ID%N 来分配存储
+            * shortUrl to longUrl
+                - 将shortUrl 转为ID
+                - 根据ID找到数据库
+                - 查出longUrl
+            * longUrl to shortUrl
+                - 先查询：广播 N 台数据库，查是否存在
+                    + 也可行，因为数据库服务器不会太多
+                - 再插入：如果不存在的话，获得下一个自增ID，插入对应数据库
+* Scale - 全局自增ID
+    - 如何获得在N台服务器中全局共享的一个自增ID是一个难点
+    - 一种解决办法是，专门用一台数据库来做自增ID服务
+        + 该数据库不存储真实数据，也不负责其他查询
+        + 为了避免单点失效（Single Point Failure) 可能需要多台数据库
+    - 另外一种解决办法是用 Zookeeper
+* Scale - **扩展short key**
+    - 如果最开始，short key 为6位，下面为short key增加 1 位前置位
+        + AB1234 → 0AB1234
+        + 还有一种做法是把第1位单独留出来做 sharding key，总共还是6位
+    - 该前置位的值由 Hash(long_url) % 62 得到
+    - 该位置则为sharding key
+        + 将换分为62个区间
+        + 每台机器在环上负责一段区间
+    - 这样我们就可以同时通过 short_url 和 long_url 得到 Sharding Key
+        + 无需广播
+        + 无论是short2long还是long2short都可以直接找到数据所在服务器
+* Scale - **Multi Region** 的进一步优化
+    - 问题： 网站服务器 (Web Server) 与 数据库服务器 (Database) 之间的通信
+        + 中心化的服务器集群（Centralized DB set）与 跨地域的 Web Server 之间通信较慢
+    - 那么何不让中国的服务器访问中国的数据库？
+        + 如果数据是重复写到中国的数据库，那么如何解决一致性问题？ - 很难解决
+    - 想一想用户习惯
+        + 中国的用户访问时，会被DNS分配中国的服务器
+        + 中国的用户访问的网站一般都是中国的网站
+        + 所以我们可以按照网站的 **地域信息**进行 Sharding
+            * 如何获得网站的地域信息？只需要将用户比较常访问的网站弄一张表就好了
+        + 中国的用户访问美国的网站怎么办？
+            * 那就让中国的服务器访问美国的数据好了，反正也不会慢多少
+            * 中国访问中国是主流需求，优化系统就是要优化主要的需求
+* Scale - 自定义链接
+    - 新建一张表存储自定义URL
+        + CustomURL table
+        ```sql
+            CREATE TABLE CustomURL (
+                `custom_url`    text,
+                `long_url`      text,
+                primary key `long_url`
+            )
+        ```
+    - 查询长链接
+        + 先查询CustomURL Table
+        + 再查询URL Table
+    - 根据长链接创建普通短连接
+        + 先查询CustomURL是否存在
+        + 再在URL table中查询和插入
+    - 常见自定义短连接
+        + 查询是否已经在URL Table中存在
+        + 再在CustomURL 中查询和插入
+
+* 小结
+    - General Questions
+        + How to sharding
+        + How to replica
+    - SQL vs NoSQL
+    - 读多 - 用 Cache 优化
+    - 写多 - 拆分数据库
+    - Multi Region
+        + 不同区域之间访问速度很慢
+        + 用户跨区访问比服务器跨区访问更慢
+
+
+
+

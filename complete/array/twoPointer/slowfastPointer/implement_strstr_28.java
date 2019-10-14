@@ -32,12 +32,8 @@ public class implement_strstr_28 {
      * 同向双指针
      */
     public int strStr(String haystack, String needle) {
-        if (needle.isEmpty()) {
-            return 0;
-        }
-        if (needle.length() > haystack.length()) {
-            return -1;
-        }
+        if (needle.isEmpty()) return 0;
+        if (needle.length() > haystack.length()) return -1;
         int right = 0;
         int index = 0;
         for (int i=0; i<haystack.length(); i++) {

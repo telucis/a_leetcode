@@ -52,16 +52,11 @@ public class long_pressed_name_925 {
                 index++;
             } else {
                 if (typed.charAt(i) != pre) {
-                    System.out.println("1");
                     return false;
                 }
             }
         }
-        if (index != name.length()) {
-            System.out.println("2");
-            return false;
-        }
-        return true;
+        return index==name.length();
     }
 
 }
