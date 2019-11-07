@@ -50,6 +50,32 @@ public class permutations_ii_47 {
         }
     }
 
+    /**
+     * 空间复杂度O(1)
+     */
+    public List<Integer> permuteUnique(int[] nums) {
+        List<List<Integer>> ans = new ArrayList<>();
+        Arrays.sort(nums);
+        helper(nums, 0, nums.length-1, ans);
+        return ans;
+    }
+    private void helper(int[] nums, int left, int right, List<List<Integer>> ans) {
+        if (left == right) ans.add(new ArrayList<>(nums));
+        else {
+            for (int i=left; i<=right; i++) {
+                if (i!=left && nums[left]==nums[i]) continue;
+                swap(nums, i, j);
+                helper(nums, left+1, right, ans);
+            }
+        }
+    }
+    private void swap(int[] nums, int i, int j) {
+        int tmp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = tmp;
+    }
+
+
 
     public List<List<Integer>> permuteUnique2(int[] nums) {
         List<List<Integer>> ans = new ArrayList<>();
